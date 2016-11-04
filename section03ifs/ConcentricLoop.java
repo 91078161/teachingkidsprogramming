@@ -14,13 +14,15 @@ public class ConcentricLoop
     {
       Tortoise.move(3);
       Tortoise.turn(1);
+      Tortoise.setPenWidth(width);
       if (i % 20 == 0)
         for (int b = 0; b < 360; b++)
         {
           Tortoise.move(1);
           Tortoise.turn(1);
           //              Change the width of the line that the tortoise draws to 1/100th of the current line --#9
-          Tortoise.setPenWidth(1 / 100);
+          int l = 8;
+          Tortoise.setPenWidth(l / 100);
         }
     }
   }
