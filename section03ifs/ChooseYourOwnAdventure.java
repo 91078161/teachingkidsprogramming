@@ -15,12 +15,12 @@ public class ChooseYourOwnAdventure
   }
   private static void startStory()
   {
-    tellMoreStory("One morning the Tortoise woke up in a dream.");
+    tellMoreStory("Today Is Election Day");
     animateStartStory();
-    String action = askAQuestion("Do you want to 'wake up' or 'explore' the dream?");
-    if ("wake up".equalsIgnoreCase(action))
+    String action = askAQuestion("Do you want to vote for 'Trump' or 'Hillary' for President?");
+    if ("Hillary".equalsIgnoreCase(action))
     {
-      wakeUp();
+      Hillary();
     }
     else if ("explore".equalsIgnoreCase(action))
     {
@@ -91,9 +91,9 @@ public class ChooseYourOwnAdventure
   {
     MessageBox.showMessage("You don't know how to read directions. You can't play this game. The end.");
   }
-  private static void wakeUp()
+  private static void Hillary()
   {
-    MessageBox.showMessage("You wake up and have a boring day. The end.");
+    MessageBox.showMessage("No more Emails");
   }
   private static void animateStartStory()
   {
