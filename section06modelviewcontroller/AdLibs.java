@@ -1,16 +1,54 @@
 package org.teachingkidsprogramming.section06modelviewcontroller;
 
+import org.teachingextensions.logo.utils.EventUtils.MessageBox;
+
 public class AdLibs
 {
   public static void main(String[] args)
   {
-    //  Ask the user to enter an adverb, save it as currentAdverb --#2
-    //  Ask the user to enter a verb ending in '-ed', save it as currentEdVerb --#4
-    //  Ask the user to enter a body part, save it as currentBodyPart --#6
-    //  Set the value of the currentStory to the word "Today " --#1.2
-    //  Add the words "I woke " + currentAdverb + ". " to the currentStory --#3
-    //  Add the words '"Then I " + currentEdVerb + " " to the currentStory --#5
-    //  Add the words "my " + currentBodyPart + ". " to the current story --#7
-    //  Show the currentStory in a message box as a message --#1.1
+    String adverb = askAdverb();
+    //MessageBox.showMessage("The adverb is " + adverb);
+    String edVerb = askEdverb();
+    //MessageBox.showMessage("Thew edVerb is " + edVerb);
+    String bodyPart = askBodyPart();
+    // MessageBox.showMessage("The body part is" + bodyPart);
+    String currentStory = "Today I woke " + adverb + ". Then I" + edVerb + " my " + bodyPart + ".";
+    MessageBox.showMessage(currentStory);
+  }
+  public static String askBodyPart()
+  {
+    String bodyPart = MessageBox.askForTextInput("What is the body part");
+    if (bodyPart.isEmpty())
+    {
+      bodyPart = askBodyPart();
+    }
+    if (bodyPart.matches("[\\d]*")) // that is a regular expression
+    {
+      MessageBox.showMessage("No body, no story, pay attention and start over!");
+      bodyPart = askBodyPart();
+    }
+  }
+  public static String askAdverb()
+  {
+    String adverb = MessageBox.askForTextInput("what is the Adverb");
+    if (adverb.isEmpty())
+    {
+      MessageBox.showMessage("Please enter a adverb");
+      adverb = askAdverb();
+    }
+    if (adverb.matches("[\\d]*"))
+    {
+      MessageBox.showMessage("numbers <> adverb ! Try again!");
+    }
+    return adverb;
+  }
+  public static String askEdVerb()
+  {
+    String edVerb = MessageBox.askForTextInput("what is the -ed verb");
+    if (edVerb.isEmpty())
+    {
+      MessageBox.showMessage("Please enter a verb in ed");
+    }
+    return edVerb;
   }
 }
