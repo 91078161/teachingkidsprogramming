@@ -8,9 +8,8 @@ public class HiLow
 {
   public static void main(String[] args)
   {
-    //    Choose a random number between 1 and 100 --#4.1 (fake!) & --#13
-    int answer = NumberUtils.getRandomInt(1, 100);
-    for (int i = 0; i < 7; i++)
+    int answer = NumberUtils.getRandomInt(1, 1000);
+    for (int i = 0; i < 20; i++)
     {
       int guess = MessageBox.askForNumericalInput("what is your guess in numbers");
       if (guess == answer)
@@ -19,17 +18,28 @@ public class HiLow
         MessageBox.showMessage("You have won the game");
         System.exit(0);
       }
-      if (answer - guess < 10 || answer - guess > -10)
+      if (answer - guess < 25 && answer - guess > -25)
       {
-        MessageBox.showMessage("You're close");
+        if (guess > answer)
+        {
+          MessageBox.showMessage("You're close and Too high");
+          Sound.playBeep();
+        }
+        if (guess < answer)
+        {
+          MessageBox.showMessage("You're close and Too low");
+          Sound.playBeep();
+        }
       }
       else if (guess > answer)
       {
         MessageBox.showMessage("Too high");
+        Sound.playBeep();
       }
       else
       {
         MessageBox.showMessage("Too low");
+        Sound.playBeep();
       }
     }
     MessageBox.showMessage("You Lost. The number was " + answer);
